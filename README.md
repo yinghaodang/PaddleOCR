@@ -12,7 +12,7 @@ PyMuPDF 支持 python311 的版本 被2.7版本的 PaddleOCR 毙掉了。PaddleO
 
 1. PaddleOCR 的日志会混入 StarRailAutoProxy 的日志，于是我删除了源码中的部分日志
 
-2. PaddleOCR 的后处理有bug, ppocr\postprocess\db_postprocess.py 的 188-191 行的写法，在低版本numpy上是 warning，目前已经直接 error. 修改方法： `np.int -> no.int32`
+2. PaddleOCR 的后处理有bug, ppocr\postprocess\db_postprocess.py 的 188-191 行的写法，在低版本numpy上是 warning，目前已经直接 error. 修改方法： `np.int -> np.int32`
 
 3. PaddleOCR 的后处理有bug, ppocr\postprocess\rec_postprocess.py 的 85 行左右，存在推理 index 超出 字符集 的 bug.
     ```
@@ -47,6 +47,7 @@ PyMuPDF 支持 python311 的版本 被2.7版本的 PaddleOCR 毙掉了。PaddleO
 python setup.py bdist_wheel
 pip3 install dist/paddleocr-x.x.x-py3-none-any.whl # x.x.x是paddleocr的版本号
 ```
+也可以使用我编译好的whl文件，在dist文件夹下。
 
 ## 其他
 
