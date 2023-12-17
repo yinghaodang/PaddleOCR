@@ -24,7 +24,7 @@ log/
 .clang_format.hook
 
 build/
-dist/
+# dist/
 paddleocr.egg-info/
 /deploy/android_demo/app/OpenCV/
 /deploy/android_demo/app/PaddleLite/

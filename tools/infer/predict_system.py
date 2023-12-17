@@ -70,8 +70,8 @@ class TextSystem(object):
         ori_im = img.copy()
         dt_boxes, elapse = self.text_detector(img)
         time_dict['det'] = elapse
-        logger.debug("dt_boxes num : {}, elapse : {}".format(
-            len(dt_boxes), elapse))
+        # logger.debug("dt_boxes num : {}, elapse : {}".format(
+        #     len(dt_boxes), elapse))
         if dt_boxes is None:
             return None, None
         img_crop_list = []
@@ -91,8 +91,8 @@ class TextSystem(object):
 
         rec_res, elapse = self.text_recognizer(img_crop_list)
         time_dict['rec'] = elapse
-        logger.debug("rec_res num  : {}, elapse : {}".format(
-            len(rec_res), elapse))
+        # logger.debug("rec_res num  : {}, elapse : {}".format(
+        #     len(rec_res), elapse))
         if self.args.save_crop_res:
             self.draw_crop_rec_res(self.args.crop_res_save_dir, img_crop_list,
                                    rec_res)
@@ -116,10 +116,11 @@ def sorted_boxes(dt_boxes):
         sorted boxes(array) with shape [4, 2]
     """
     num_boxes = dt_boxes.shape[0]
-    if abs(num_boxes - 2) < 1e-4:
-        sorted_boxes = sorted(dt_boxes, key=lambda x: (x[1], x[0]))
-    else:
-        sorted_boxes = sorted(dt_boxes, key=lambda x: (x[0][1], x[0][0]))
+    # if abs(num_boxes - 2) < 1e-4:
+    #     sorted_boxes = sorted(dt_boxes, key=lambda x: (x[1], x[0]))
+    # else:
+    #     sorted_boxes = sorted(dt_boxes, key=lambda x: (x[0][1], x[0][0]))
+    sorted_boxes = sorted(dt_boxes, key=lambda x: (x[0][1], x[0][0]))
     _boxes = list(sorted_boxes)
 
     for i in range(num_boxes - 1):

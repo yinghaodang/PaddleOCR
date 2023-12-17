@@ -82,7 +82,7 @@ class BaseRecLabelDecode(object):
 
             char_list = [
                 self.character[text_id]
-                for text_id in text_index[batch_idx][selection]
+                for text_id in text_index[batch_idx][selection] if text_id < len(self.character)
             ]
             if text_prob is not None:
                 conf_list = text_prob[batch_idx][selection]
